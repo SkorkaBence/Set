@@ -1,24 +1,45 @@
 #ifndef H_SBL_SET
 #define H_SBL_SET
 
-#include "List/LinkedList.h"
-
-typedef sbl::LinkedList<int, true, true> set_linkedlist_type;
-typedef set_linkedlist_type::iterator set_linkedlist_iterator;
+#include <iostream>
 
 namespace sbl {
 
     class Set {
     private:
-        set_linkedlist_type data;
+        class SetItem {
+        public:
+            SetItem* next = nullptr;
+            int value;
+        };
+
+        SetItem* first = nullptr;
+
+        SetItem* newItem(int val, SetItem* next);
+        SetItem* newItem(int val);
+
+        void CopyFrom(const Set& cpy);
     public:
 
         Set();
+        Set(const Set& cpy);
+        ~Set();
+        void insert(int a);
+        bool find(int a);
+        void remove(int a);
+        bool isEmpty();
+        void clear();
+        int size();
 
-        bool isEmpty() const;
-        bool insert(int value);
-        bool remove(int value);
-        bool find(int value);
+        void operator = (const Set& cpy);
+
+        friend std::ostream& operator << (std::ostream& out, Set& dt);
+
+        void saveData(std::ostream out);
+        void loadData(std::istream in);
+
+        friend Set operator & (const Set& set1, const Set& set2);
+        friend Set operator | (const Set& set1, const Set& set2);
 
     };
 
