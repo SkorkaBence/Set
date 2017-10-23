@@ -47,6 +47,8 @@ TEST_CASE("Clear set", "[set]") {
     for (int i = -500; i < 1500; i++) {
         REQUIRE( ! set.find(i) );
     }
+
+    REQUIRE( set.isEmpty() );
 }
 
 TEST_CASE("& and |", "[set]") {
@@ -75,14 +77,14 @@ TEST_CASE("& and |", "[set]") {
 
         if (i % 6 == 0) {
             REQUIRE( intersect.find(i) );
-            REQUIRE( ! diff.find(i) );
         } else {
             REQUIRE( ! intersect.find(i) );
-            if (i % 2 == 0 || i % 3 == 0) {
-                REQUIRE( diff.find(i) );
-            } else {
-                REQUIRE( ! diff.find(i) );
-            }
+        }
+
+        if ((i % 2 == 0) != (i % 3 == 0)) {
+            REQUIRE( diff.find(i) );
+        } else {
+            REQUIRE( ! diff.find(i) );
         }
     }
 }
