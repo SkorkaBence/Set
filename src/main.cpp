@@ -1,10 +1,11 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <fstream>
 
 #include "Set/Set.h"
 
-//#define RUN_TEST
+#define RUN_TEST
 
 #ifdef RUN_TEST
 #include "tests.h"
@@ -14,6 +15,7 @@
 
 void addToSet(sbl::Set* st);
 void removeFromSet(sbl::Set* st);
+void showAsciiArt(std::string name);
 
 int main() {
     sbl::Set* A = new sbl::Set();
@@ -41,7 +43,7 @@ int main() {
         println("4 - Echo set " << selected_set);
         println("5 - Change set: " << selected_set << "->" << unselected_set);
         println("6 - Intersect: A&B");
-        println("7 - SzimDif: A|B");
+        println("7 - SymDiff: A|B");
         //println("8 - Save set " << selected_set << " into file");
         //println("9 - Load set " << selected_set << " from file");
         println("-------------------------------");
@@ -86,6 +88,7 @@ int main() {
         }
     }
 
+    showAsciiArt("aperture");
     println("This was a triumph...");
 }
 
@@ -117,5 +120,14 @@ void removeFromSet(sbl::Set* st) {
     }
 }
 
+void showAsciiArt(std::string name) {
+    std::ifstream f("ascii/" + name + ".txt");
+    if (f.is_open()) {
+        std::string str;
+        while (std::getline(f, str)) {
+            std::cout << str << std::endl;
+        }
+    }
+}
 
 #endif

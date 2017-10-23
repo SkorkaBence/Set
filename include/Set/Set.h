@@ -30,7 +30,7 @@ namespace sbl {
         void clear();
         int size();
 
-        void operator = (const Set& cpy);
+        void operator = (Set cpy);
 
         friend std::ostream& operator << (std::ostream& out, Set& dt);
 

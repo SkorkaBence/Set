@@ -31,7 +31,7 @@ namespace sbl {
         }
     }
 
-    void Set::operator = (const Set& cpy) {
+    void Set::operator = (Set cpy) {
         CopyFrom(cpy);
     }
 

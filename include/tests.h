@@ -53,7 +53,7 @@ TEST_CASE("& and |", "[set]") {
     sbl::Set set1;
     sbl::Set set2;
 
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 10000; i++) {
         if (i % 2 == 0) {
             set1.insert(i);
         }
@@ -65,7 +65,7 @@ TEST_CASE("& and |", "[set]") {
     sbl::Set intersect = set1 & set2;
     sbl::Set diff = set1 | set2;
 
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 10000; i++) {
         if (i % 2 == 0) {
             REQUIRE( set1.find(i) );
         }
@@ -80,6 +80,8 @@ TEST_CASE("& and |", "[set]") {
             REQUIRE( ! intersect.find(i) );
             if (i % 2 == 0 || i % 3 == 0) {
                 REQUIRE( diff.find(i) );
+            } else {
+                REQUIRE( ! diff.find(i) );
             }
         }
     }
@@ -107,6 +109,26 @@ TEST_CASE("copy", "[set]") {
         } else {
             REQUIRE( ! set1.find(i) );
             REQUIRE( ! set2.find(i) );
+        }
+    }
+}
+
+TEST_CASE("self-copy", "[set]") {
+    sbl::Set set1;
+
+    for (int i = 0; i < 1000; i++) {
+        if (i % 2 == 0) {
+            set1.insert(i);
+        }
+    }
+
+    set1 = set1;
+
+    for (int i = 0; i < 1000; i++) {
+        if (i % 2 == 0) {
+            REQUIRE( set1.find(i) );
+        } else {
+            REQUIRE( ! set1.find(i) );
         }
     }
 }
