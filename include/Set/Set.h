@@ -20,7 +20,6 @@ namespace sbl {
 
         void CopyFrom(const Set& cpy);
     public:
-
         Set();
         Set(const Set& cpy);
         ~Set();
@@ -40,7 +39,6 @@ namespace sbl {
 
         friend Set operator & (const Set& set1, const Set& set2);
         friend Set operator | (const Set& set1, const Set& set2);
-
     };
 
 }
