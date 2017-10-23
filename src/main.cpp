@@ -5,7 +5,7 @@
 
 #include "Set/Set.h"
 
-#define RUN_TEST
+//#define RUN_TEST
 
 #ifdef RUN_TEST
 #include "tests.h"
