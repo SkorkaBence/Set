@@ -5,7 +5,7 @@
 
 #include "Set/Set.h"
 
-//#define RUN_TEST
+#define RUN_TEST
 
 #ifdef RUN_TEST
 #include "tests.h"
@@ -48,7 +48,9 @@ int main() {
         println("-------------------------------");
 
         int menu_selecton;
+        std::cout << ">>> ";
         std::cin >> menu_selecton;
+
         switch (menu_selecton) {
             case 0:
                 stoploop = true;
@@ -91,6 +93,8 @@ int main() {
 }
 
 void addToSet(sbl::Set* st) {
+    std::cout << "[]> ";
+
     std::cin.clear();
     std::cin.ignore(1000, '\n');
 
@@ -105,6 +109,8 @@ void addToSet(sbl::Set* st) {
 }
 
 void removeFromSet(sbl::Set* st) {
+    std::cout << "[]> ";
+
     std::cin.clear();
     std::cin.ignore(1000, '\n');
 
