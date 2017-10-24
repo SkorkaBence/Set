@@ -44,8 +44,7 @@ int main() {
         println("5 - Change set: " << selected_set << "->" << unselected_set);
         println("6 - Intersect: A&B");
         println("7 - SymDiff: A|B");
-        //println("8 - Save set " << selected_set << " into file");
-        //println("9 - Load set " << selected_set << " from file");
+        println("8 - Is set " << selected_set << " empty?");
         println("-------------------------------");
 
         int menu_selecton;
@@ -74,16 +73,15 @@ int main() {
                 }
                 break;
             case 6:
-                s = *(A) & *(B);
+                s = *A & *B;
                 std::cout << s << std::endl;
                 break;
             case 7:
-                s = *(A) | *(B);
+                s = *A | *B;
                 std::cout << s << std::endl;
                 break;
             case 8:
-                break;
-            case 9:
+                std::cout << (selected->isEmpty() ? "Empty" : "Not Empty") << std::endl;
                 break;
         }
     }
